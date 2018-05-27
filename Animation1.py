@@ -1,11 +1,18 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
+#from matplotlib.lines import Line2D as line
 
-fig, ax = plt.subplots()
-xsize, ysize, xarea, yarea = [], [], [], []
-ln1, = plt.plot([], [], 'ro', animated=True)
-#ln2, = plt.plot([], [], 'ro', animated=True)
+fig, ax1 = plt.subplots()
+#ax2 = plt.subplots()
+xp1, yp1, xarea, yarea = [], [], [], []
+pt1, = plt.plot([], [], 'ro', animated=True)
+pt2, = plt.plot([], [], 'ro', animated=True)
+pt3, = plt.plot([], [], 'ro', animated=True)
+
+ln1, = plt.plot([], [], '-b', animated=True)
+ln2, = plt.plot([], [], '-b', animated=True)
+
 xcord, ycord, area, time = [], [], [], []
 
 for i in np.linspace(0, 20, 51):
@@ -23,15 +30,27 @@ plt.title('Terreno')
 plt.grid(True)
 
 def init():
-    ax.set_xlim(0, 22)
-    ax.set_ylim(0, 12)
-    return ln1,
+    ax1.set_xlim(0, 22)
+    ax1.set_ylim(0, 12)
+#    ax2.set_xlim(0, 22)
+#    ax2.set_ylim(0, 12)
+    return pt1,
+#    return ln2,
 
 def update(frame):
-    xsize = frame
-    ysize = -(frame)/2 + 10
-    ln1.set_data(xsize, ysize)
-    return ln1,
+    xp1 = frame
+    yp1 = -(frame)/2 + 10
+    xp2 = frame
+    yp2 = 0
+    xp3 = 0
+    yp3 = -(frame)/2 + 10
+    pt1.set_data(xp1, yp1)
+    pt2.set_data(xp2, yp2)
+    pt3.set_data(xp3, yp3)
+
+    ln1.set_data([yp1, xp1], [xp1, yp2])
+    ln2.set_data([xp3, yp3], [yp1, xp1])
+    return pt1, pt2, pt3, pt1, ln1, ln2,
 
 
 ani = FuncAnimation(fig, update, frames=np.linspace(0, 20, 200),
