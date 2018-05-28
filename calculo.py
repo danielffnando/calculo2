@@ -18,18 +18,18 @@ for i in np.linspace(0, 20, 51):
 
 mpl.rc('lines', linewidth=4, color='r')
 
-#plt.figure(num=1, figsize=(10, 8), dpi=80, facecolor='w', edgecolor='k')
-#plt.subplot(2, 1, 1)
+plt.figure(num=1, figsize=(10, 8), dpi=80, facecolor='w', edgecolor='k')
+plt.subplot(2, 1, 1)
 plt.plot(xcord, ycord)
 plt.title('Terreno')
 plt.grid(True)
 
-#plt.subplot(2, 1, 2)
-#plt.plot(time, area)
-#plt.title('Area')
-#plt.xlabel('Time')
-#plt.ylabel('Area')
-#plt.grid(True)
+plt.subplot(2, 1, 2)
+plt.plot(time, area)
+plt.title('Area')
+plt.xlabel('Time')
+plt.ylabel('Area')
+plt.grid(True)
 
 plt.tight_layout()
 plt.show()

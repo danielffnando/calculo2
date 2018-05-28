@@ -15,9 +15,9 @@ def dfunc(X):
         dLambda[i] = (func(X+dX)-func(X-dX))/(2*h);
     return dLambda
 # this is the max
-X1 = fsolve(dfunc, [5, 10, 20])
+X1 = fsolve(dfunc, [10, 5, -5])
 print X1, func(X1)
 
 # this is the min
-X2 = fsolve(dfunc, [-1, -1, 0])
+X2 = fsolve(dfunc, [10, 5, -5])
 print X2, func(X2)

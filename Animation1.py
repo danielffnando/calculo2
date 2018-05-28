@@ -11,9 +11,10 @@ pt1, = plt.plot([], [], 'ro', animated=True)
 pt2, = plt.plot([], [], 'ro', animated=True)
 pt3, = plt.plot([], [], 'ro', animated=True)
 
-### LINES ###
-ln1, = plt.plot([], [], '-b', animated=True)
-ln2, = plt.plot([], [], '-b', animated=True)
+### RECTANGLE ###
+rect = plt.Rectangle([0, 0], 0, 0)
+rect.set_color('r')
+ax1.add_patch(rect)
 
 ### CREATING THE DIAGONAL LINE  F(X) = -X/2 + 10
 xcord, ycord, area, time = [], [], [], []
@@ -30,7 +31,6 @@ plt.plot(xcord, ycord)
 plt.title('Terreno')
 plt.grid(True)
 
-
 ### DEALING WITH THE ANIMATION ###
 def init():
     ax1.set_xlim(0, 22)
@@ -43,15 +43,15 @@ def update(frame):
     yp2 = 0
     xp3 = 0
     yp3 = -(frame)/2 + 10
+
     pt1.set_data(xp1, yp1)
     pt2.set_data(xp2, yp2)
     pt3.set_data(xp3, yp3)
 
-    ln1.set_data([yp1, xp1], [xp1, yp2])
-    ln2.set_data([xp3, yp3], [yp1, xp1])
-    return pt1, pt2, pt3, pt1, ln1, ln2,
+    rect.set_height(yp1)
+    rect.set_width(xp1)
 
-
+    return pt1, pt2, pt3, pt1, rect,
 ani = FuncAnimation(fig, update, frames=np.linspace(0, 20, 200),
                     init_func=init, blit=True)
 plt.show()
