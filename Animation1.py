@@ -6,17 +6,17 @@ fig, ax1 = plt.subplots()
 
 xp1, yp1, xarea, yarea = [], [], [], []
 
-### POINTS ###
+### PONTOS ###
 pt1, = plt.plot([], [], 'ro', animated=True)
 pt2, = plt.plot([], [], 'ro', animated=True)
 pt3, = plt.plot([], [], 'ro', animated=True)
 
-### RECTANGLE ###
+### RETANGULO ###
 rect = plt.Rectangle([0, 0], 0, 0)
 rect.set_color('r')
 ax1.add_patch(rect)
 
-### CREATING THE DIAGONAL LINE  F(X) = -X/2 + 10
+### CRIANDO A LINHA DIAGONAL  F(X) = -X/2 + 10
 xcord, ycord, area, time = [], [], [], []
 
 for i in np.linspace(0, 20, 51):
@@ -31,7 +31,7 @@ plt.plot(xcord, ycord)
 plt.title('Terreno')
 plt.grid(True)
 
-### DEALING WITH THE ANIMATION ###
+### FAZENDO A ANIMACAO ###
 def init():
     ax1.set_xlim(0, 22)
     ax1.set_ylim(0, 12)
@@ -55,3 +55,4 @@ def update(frame):
 ani = FuncAnimation(fig, update, frames=np.linspace(0, 20, 200),
                     init_func=init, blit=True)
 plt.show()
+#ani.save('Animation1.mp4')

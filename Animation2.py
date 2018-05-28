@@ -5,7 +5,6 @@ from matplotlib.animation import FuncAnimation
 fig, ax = plt.subplots()
 xsize, ysize, xarea, yarea = [], [], [], []
 ln, = plt.plot([], [], 'ro', animated=True)
-#ln2, = plt.plot([], [], 'ro', animated=True)
 xcord, ycord, area, time = [], [], [], []
 
 for i in np.linspace(0, 20, 51):
@@ -16,7 +15,6 @@ for i in np.linspace(0, 20, 51):
     area.append(x*y)
     time.append(i)
 
-#plt.subplot(2, 1, 2)
 plt.plot(time, area)
 plt.title('Area')
 plt.xlabel('Time')
@@ -38,3 +36,4 @@ def update(frame):
 ani = FuncAnimation(fig, update, frames=np.linspace(0, 20, 200),
                     init_func=init, blit=True)
 plt.show()
+#ani.save('Animation2.mp4')
